@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | MaaS</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <div class="side-bar">
+        <h3>Admin</h3>
+        <ul>
+          <li class="menu-item active" data-section="cats">
+            <i class="fas fa-th-large"></i><span>Categories</span>
+          </li>
+          <li class="menu-item" data-section="prods">
+            <i class="fas fa-laptop-code"></i><span>Products</span>
+          </li>
+          <li class="menu-item" data-section="orders">
+            <i class="fas fa-shopping-cart"></i><span>Orders</span>
+          </li>
+          <li class="menu-item" data-section="users">
+            <i class="fas fa-users"></i><span>Users</span>
+          </li>
+          <li class="menu-item" data-section="coupons">
+            <i class="fa-solid fa-ticket"></i><span>Coupons</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="mid">
+          <h1>Dashboard</h1>
+          <section class="cats" style="display: none">
+            <div class="wrapper">
+              <div class="form">
+                <form id="category-form" action="#" method="get">
+                  <div>
+                    <label class="category-name" for="categoryName"
+                      >Category Name <span style="color: red">*</span></label
+                    ><br />
+                    <input
+                      type="text"
+                      class="cat-input"
+                      name="categoryName"
+                      id="categoryName"
+                      placeholder="ex: Electronics"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                    /><br />
+                    <span id="catError" style="display: none; color: red"
+                      >Category Names must be from 3 characters to 20
+                      characters.</span
+                    >
+                  </div>
+                  <input
+                    type="submit"
+                    value="ADD CATEGORY"
+                    class="sub"
+                    id="submitBtn"
+                  />
+                  <button
+                    type="button"
+                    id="updateBtn"
+                    class="updSub"
+                    style="display: none; margin: auto; color: #ffffff"
+                  >
+                    Update Category
+                  </button>
+                </form>
+              </div>
+              <div class="categories">
+                <h2>Categories</h2>
+                <div class="responsive-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="prods" style="display: none">
+            <div class="wrapper">
+              <div class="form">
+                <form id="product-form">
+                  <label for="name"
+                    >Product Name <span style="color: red">*</span></label
+                  ><br />
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter Product Name"
+                    maxlength="50"
+                  />
+                  <div id="nameError" class="error"></div>
+
+                  <label for="color"
+                    >Color <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="color"
+                    name="color"
+                    placeholder="Enter Product Color"
+                  />
+                  <div id="colorError" class="error"></div>
+
+                  <label for="category"
+                    >Category <span style="color: red">*</span></label
+                  >
+                  <select id="category">
+                    <option value="" disabled selected>
+                      Select The Category
+                    </option>
+                  </select>
+                  <div id="categoryError" class="error"></div>
+
+                  <label for="brand"
+                    >Brand <span style="color: red">*</span></label
+                  >
+                  <select id="brand">
+                    <option value="" disabled selected>Select The Brand</option>
+                  </select>
+                  <div id="brandError" class="error"></div>
+
+                  <label for="price"
+                    >Price <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="number"
+                    name="price"
+                    min="1"
+                    id="price"
+                    placeholder="Enter Product Price"
+                  />
+                  <div id="priceError" class="error"></div>
+
+                  <label for="quantity"
+                    >Quantity <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="number"
+                    name="quantity"
+                    id="quantity"
+                    placeholder="Enter Quantity"
+                  />
+                  <div id="quantityError" class="error"></div>
+
+                  <label for="description"
+                    >Description <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    placeholder="Enter Product Description"
+                  />
+                  <div id="descriptionError" class="error"></div>
+
+                  <label for="productImage">
+                    Image
+                    <span style="color: red">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    name="productImage"
+                    id="productImage"
+                    accept="image/*"
+                  />
+                  <div id="imageError" class="error"></div>
+
+                  <button id="add" class="sub updSub" type="button">
+                    Add Product
+                  </button>
+                  <button
+                    class="sub updSub"
+                    style="display: none"
+                    id="update"
+                    type="button"
+                  >
+                    Update Product
+                  </button>
+                </form>
+              </div>
+              <div class="categories">
+                <h2>Products</h2>
+                <div class="responsive-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th colspan="2">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="orders" style="display: none">
+            <div class="wrapper">
+              <div class="categories">
+                <h4>Orders</h4>
+
+                <div class="categoriesSection"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="users" style="display: none">
+            <div class="wrapper">
+              <div class="categories">
+                <h4>Users</h4>
+                <div class="responsive-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tUsersBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="coupons" style="display: none">
+            <div class="wrapper">
+              <div class="form">
+                <form id="coupon-form" action="#" method="get">
+                  <div>
+                    <label class="coupon-name" for="couponName"
+                      >Coupon Name <span style="color: red">*</span></label
+                    ><br />
+                    <input
+                      type="text"
+                      class="coupon-input"
+                      name="couponName"
+                      id="couponName"
+                      placeholder="Coupon Name"
+                      required
+                      minlength="8"
+                      maxlength="8"
+                    /><br />
+                    <span id="coupIdError" style="display: none; color: red"
+                      >Coupon consists of 8 characters.</span
+                    >
+                  </div>
+                  <div>
+                    <label class="coupon-date" for="couponDate"
+                      >Expiration Date <span style="color: red">*</span></label
+                    ><br />
+                    <input
+                      type="date"
+                      class="coupon-input"
+                      name="couponDate"
+                      id="couponDate"
+                      required
+                    />
+                    <br />
+                    <span id="coupDateError" style="display: none; color: red"
+                      >Date Error</span
+                    >
+                  </div>
+                  <input
+                    type="submit"
+                    value="ADD Coupon"
+                    class="sub"
+                    id="submitBtn"
+                  />
+                </form>
+              </div>
+              <div class="categories">
+                <h2>Coupons</h2>
+                <div class="responsive-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Coupon Name</th>
+                        <th>Expiration Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tCouponsBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" defer src="/dashboard.js/category.js"></script>
+    <script type="module" defer src="/dashboard.js/coupon.js"></script>
+    <script type="module" defer src="/dashboard.js/order.js"></script>
+    <script type="module" defer src="/dashboard.js/product.js"></script>
+    <script type="module" defer src="/dashboard.js/user.js"></script>
+    <script type="module" defer src="/dashboard.js/sections.js"></script>
+  </body>
+</html>
